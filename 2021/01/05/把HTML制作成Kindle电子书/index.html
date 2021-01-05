@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/mIcon.png">
+  <link rel="icon" type="image/png" href="/img/mIcon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="科学怪人">
+  <meta name="keywords" content="">
+  <title>把 HTML 制作成 Kindle 电子书 - 科学怪人</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.1.2/styles/vs2015.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"fancybear2046.github.io","root":"/","version":"1.8.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"|","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>科学怪人</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        <!--
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+        -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/n2_crop.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="把 HTML 制作成 Kindle 电子书">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-05 08:27" pubdate>
+        2021年1月5日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">把 HTML 制作成 Kindle 电子书</h1>
+            
+            <div class="markdown-body">
+              <h2 id="下载-HTML-文件"><a href="#下载-HTML-文件" class="headerlink" title="下载 HTML 文件"></a>下载 HTML 文件</h2><p>首先把包含书籍内容的相关 HTML 都下载下来，以我要制作的这本书为例，它在网站上的 URL 规律为<code>http://a.b/a/b/000N</code>，N 是一个线性递增的数字，一个页面包含了一个章节。根据这个规律，（在 Linux 环境下）用 curl 命令就可以把需要的页面批量下载到本地：</p>
+<div class="hljs"><pre><code class="hljs bash">curl -O http://a.com/a/b/0000[1-9] <span class="hljs-comment"># [1-9] 表示一个指定范围的数字，curl 会用每个数字组合出 URL</span>
+curl -O http://a.com/a/b/000[10-18] <span class="hljs-comment">#  因为数字位数的变化，分两次执行</span></code></pre></div>
+<p>如果要下载的网页的 URL 没有规律的话，那就只能手动一个一个地下载了。</p>
+<div class="note note-info">
+            <p>如果使用浏览器下载，注意设置为「只下载 HTML文件」，其他类似 CSS、JavaScript 等资源文件无需下载。</p>
+          </div>
+
+<p><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/biYLeNWiUd.png" srcset="/img/loading.gif" alt="下载的 HTML 文件"> </p>
+<h2 id="处理-HTML-文件"><a href="#处理-HTML-文件" class="headerlink" title="处理 HTML 文件"></a>处理 HTML 文件</h2><p>整本书的内容分散在多个 HTML 文件中，把它们集中到一个文件方便处理。这一步没有通用的办法，要自己根据 HTML 的内部结构进行处理，我这里的情况是：书籍内容的位置分别在每个 HTML 文件的第 697 行到倒数第 5 行。因此我写了一个简单的 Shell 脚本来把每个 HTML 文件中的书籍内容部分合并到一个 HTML 文件中，脚本内容如下：</p>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> ./text*.html; <span class="hljs-keyword">do</span>
+    sed <span class="hljs-string">&#x27;1,696d&#x27;</span> <span class="hljs-variable">$&#123;file&#125;</span> | tac | sed <span class="hljs-string">&#x27;1,4d&#x27;</span> | tac &gt;&gt; index.html
+    <span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;\n\n\n&quot;</span> &gt;&gt; index.html
+<span class="hljs-keyword">done</span></code></pre></div>
+
+<p><code>index.html</code> 是我事先手动创建的，内容很简单，只需要写上常规的 HTML 文件的头部内容：</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span> <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="hljs-meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>高度安全环境下的高级渗透测试<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 闭合标签稍后再添加 --&gt;</span></code></pre></div>
+<p>包含文章内容的 HTML 标签 会被依次插入到<code>index.html</code>文件末尾，如果文件名能够以正确的排序方式被列出的话那么<code>index.html</code>文件所包含的文章段落的顺序就是正确的，否则需要手动排列好文章内容的顺序（为了方便查看，Shell 脚本会自动在每个被插入的 HTML 内容的末尾添加三个空行，如果需要手动排序，这样也会方便点）。</p>
+<p>Shell 脚本处理完后，再在<code>index.html</code>文件末尾插入<code>&lt;/body&gt;</code>、<code>&lt;/html&gt;</code>闭合掉标签即可。</p>
+<h2 id="下载-HTML-文件中的图片资源"><a href="#下载-HTML-文件中的图片资源" class="headerlink" title="下载 HTML 文件中的图片资源"></a>下载 HTML 文件中的图片资源</h2><p>HTML 文件中的图片资源需要下载到本地，否则转换格式后在 Kindle 上将看不到图片（或图片格式有问题）。<br>我这里的 HTML 中的图片链接用的都是类似于<code>src=&quot;Image.jpg&quot;</code>这样的相对路径，我使用以下命令把 HTML 文件中的所有图片名都提取出来并给它们加上文件名前面的路径以组成完整的 URL，然后写入到<code>urls</code>文件中方便后续批量下载：</p>
+<div class="hljs"><pre><code class="hljs bash">sed -n -E <span class="hljs-string">&#x27;s/.* src=&quot;(.+\.(jpg|gif)).*/http:\/\/a.b\/d\/e\/f\/g\/\1/p&#x27;</span> index.html &gt; urls</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/4OPFKUo7qE.png" srcset="/img/loading.gif" alt="urls 文件内容"></p>
+<p>使用<code>aria2c</code>工具下载<code>urls</code>文件中的所有图片链接：</p>
+<div class="hljs"><pre><code class="hljs bash">aria2c -i urls</code></pre></div>
+<p>如果 HTML 文件中的图片链接使用的是像<code>src=&quot;http://a.b.c/d/img.jpg&quot;</code>这样的绝对路径或是像<code>src=&quot;../image/img.jpg&quot;</code>这样前面带有目录的相对路径的话，那么需要把 HTML 文件中所有的图片链接改为本地图片的相对路径或绝对路径。我这个 HTML 文件中的图片链接使用的全部都是指向当前目录的相对路径，所以只需要把图片都下载到 HTML 文件所在的目录中就行了，不需要修改。</p>
+<p><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/BUD99A3Dmk.png" srcset="/img/loading.gif" alt="下载的图片"></p>
+<p>一切都处理完后，用浏览器打开 HTML 文件看看是否一切正常（特别是图片是否正常显示）：<br><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/zLkLuWGiMJ.png" srcset="/img/loading.gif" alt="处理后的 HTML 文件"> </p>
+<h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>处理好 HTML 文件后就可以使用 Calibre 转换为需要的电子书格式：</p>
+<div class="note note-warning">
+            <p>如果之前下载的那些分散的 HTML 文件和要转换的 HTML 文件在同一个目录下的话，在导入前一定要把那些分散的 HTML 文件都删掉，否则在导入 HTML 文件的时候会莫名其妙地顺带导入个别未指定的其他 HTML 文件。这里把我坑惨了！</p>
+          </div>
+
+<ol>
+<li><p>导入书籍<br>点击「添加书籍」，选择前面处理好的 HTML 文件，导入后即可在书架上看到对应的书籍。</p>
+</li>
+<li><p>转换格式并生成目录<br>首先选中书籍，然后点击「转换书籍」，在新弹出的窗口的左侧菜单栏中选择「目录」，可以在这里使用 XPath 表达式让 Calibre 生成书籍的目录，我这个 HTML 文件的结构是这样的：一级标题用<code>&lt;h1&gt;</code>标签，二级标题用<code>&lt;h2&gt;</code>标签，所以可以使用以下 XPath 表达式来为书籍生成一级/二级目录：<br><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/5vBKoMw6er.png" srcset="/img/loading.gif" alt="XPath 表达式"></p>
+</li>
+</ol>
+<p>其他像输出格式、书名、作者等设置根据自己的需要酌情修改，我选择的输出格式是 MOBI（这是默认的输出格式，我另外设置了 MOBI 文件类型为 both） 。修改好后点击「确定」即可开始转换。</p>
+<div class="note note-info">
+            <p>实际上 Calibre 也提供了命令行工具，在命令行中也可以完成上述的所有操作，只不过通过界面操作比较简便而已。</p>
+          </div>
+
+<h2 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h2><p>转换完成后就可以来看看效果了，以下分别是在 Calibre 阅读器和 Kindle 上的显示效果：<br><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/EMVUxxwGCB.png" srcset="/img/loading.gif" alt="在 Calibre 阅读器中的效果"></p>
+<p><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/ptBWkDlAWx.jpg" srcset="/img/loading.gif" alt="在 Kindle 上的效果（在 Kindle 上截取不到目录的图片，这张是手机拍的）"> </p>
+<p><img src="https://raw.githubusercontent.com/FancyBear2046/FancyBear2046.github.io/Pics/cK3dPT86Bl.jpg" srcset="/img/loading.gif" alt="在 Kindle 上的效果"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6/">电子书</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Kindle/">Kindle</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Calibre/">Calibre</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'FancyBear2046/FancyBear2046.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'Comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.5.3/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.12.0/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
